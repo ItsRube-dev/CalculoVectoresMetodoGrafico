@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/cuadricula.css">
+</head>
+<body>
+   
+
+       
+    <form id="formulario">
+
+        <label for="vectorA_x">Componente en x del vector a</label>
+        <input type="number" id="vectorA_x" name="vectorA_x" min="-10" max="10" step="any" required>
+        <br>
+        <label for="vectorA_y">Componente en y del vector a</label>
+        <input type="number" id="vectorA_y" name="vectorA_y" min="-10" max="10" step="any" required>
+        <br>
+        <label for="vectorB_x">Componente en x del vector b</label>
+        <input type="number" id="vectorB_x" name="vectorB_x" min="-10" max="10" step="any" required>
+        <br>
+        <label for="vectorB_y">Componente en y del vector b</label>
+        <input type="number" id="vectorB_y" name="vectorB_y" min="-10" max="10" step="any" required>
+        <br>
+        <input type="button" value="enviar" id="enviar">
+    </form>
+
+            
+
+    <div class="contenedor">
+    <canvas id="cuadricula"></canvas>
+    </div>
+
+      
+
+      
+
+
+  
+    
+    
+
+    <script src="JS/cuadricula.js"></script>
+
+</body>
+</html>
