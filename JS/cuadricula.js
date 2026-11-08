@@ -113,7 +113,7 @@ function enviar_datos() {
     
 
     dibujar();
-
+    
 }
 
 
@@ -141,16 +141,36 @@ function dibujarVector(x1, y1, x2, y2, color) {
     ctx.stroke();
 }
 
+function dibujarPunto(x, y, radio, color) {
+    ctx.beginPath();
+    ctx.arc(x,y,radio,0,Math.PI*2)
+    ctx.fillStyle = color;
+    ctx.fill();
+}
+
+function dibujarEje(x1, y1, x2, y2, color ,  componente) {
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.strokeStyle = color;
+    ctx.lineWidth= 5;
+    ctx.stroke(); 
+
+    console.log("eje dibujado");
+    console.log("x1:",x1," y1:",y1," x2:",x2," y2:",y2," ",componente)
+    
+}
+
 function dibujarCuadricula(){
     const { ejeXpositivo_cuadricula, ejeYpositivo_cuadricula, ejeXnegativo_cuadricula, ejeYnegativo_cuadricula  } = datosCuadricula;
 
-    console.log("eje x negativo",ejeXnegativo_cuadricula*-100);
-    
 
+    
+    // vector en x
     for (let i = 0; i <=ejeXpositivo_cuadricula; i+=100) {
         if (i==(ejeXnegativo_cuadricula*-100)){
-            dibujarVector(i,0,i,ejeYpositivo_cuadricula,"cyan");
-            console.log("i: ",i);
+            dibujarEje(i,0,i,ejeYpositivo_cuadricula,"green", "X");
+
             
         }else{
             dibujarVector(i,0,i,ejeYpositivo_cuadricula,"white");
@@ -158,10 +178,10 @@ function dibujarCuadricula(){
         
         
     }
-
+    // Vector en y
     for (let i = 0; i <=ejeYpositivo_cuadricula; i+=100) {
         if (i==(ejeYnegativo_cuadricula*-100)){
-            dibujarVector(i,0,i,ejeYpositivo_cuadricula,"cyan");
+            dibujarEje(0,i,ejeXpositivo_cuadricula,i,"green", "Y");
         }else{
             dibujarVector(0,i,ejeXpositivo_cuadricula,i,"white");
         }
@@ -192,18 +212,19 @@ function dibujar() {
 
     ctx.save();
 
-    // Origen abajo a la izquierda, y hacia arriba (en píxeles, sin escalar)
+  
     ctx.translate(0, canvas.height);
     ctx.scale(1, -1);
     ctx.lineWidth = 2;
 
-    const ox = ejeXnegativo_cuadricula * -1 * 100;
-    const oy = ejeYnegativo_cuadricula * -1 * 100;
+    const ox = ejeXnegativo_cuadricula *  -100;
+    const oy = ejeYnegativo_cuadricula *  -100;
 
     dibujarCuadricula();
+    dibujarPunto(valoresX[0],valoresY[0],10,"red");
 
     dibujarVector(ox, oy, valoresX[1], valoresY[1], 'yellow');                    // A
-    dibujarVector(valoresX[1], valoresY[1], valoresX[0], valoresY[0], 'yellow');    // B
+    dibujarVector(valoresX[1], valoresY[1], valoresX[0], valoresY[0], 'orange');    // B
     dibujarVector(ox, oy, valoresX[0], valoresY[0], 'red');                       // Resultante
 
     ctx.restore();

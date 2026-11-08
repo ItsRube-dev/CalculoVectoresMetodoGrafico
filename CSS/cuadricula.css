@@ -1,3 +1,41 @@
+form {
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16px 24px;
+}
+
+form .campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: white;
+}
+
+form .campo:last-child {
+  flex-basis: 100%;
+  align-items: center;
+}
+
+form label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+form input[type="number"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 8px;
+}
+
+form input[type="button"] {
+  padding: 10px 24px;
+  cursor: pointer;
+  font-size: 14px;
+}
 
 html, body {
   height: 100%;
@@ -11,15 +49,10 @@ body {
   box-sizing: border-box;
   padding: 20px;
   font-family: Arial, sans-serif;
-  background: #373838;
-  color: white;
+  background-color: #292929;
 }
 
-form {
-  margin-bottom: 16px;
-}
 
-/* Ocupa todo el espacio restante debajo del formulario */
 .contenedor {
   flex: 1;
   min-height: 0;
@@ -34,8 +67,6 @@ canvas {
   box-sizing: border-box;
   background: #000;
   border: 1px solid #ccc;
-  
   max-width: 100%;
   max-height: 100%;
-
 }
